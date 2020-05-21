@@ -11,16 +11,16 @@ import org.drools.core.WorkingMemory;
 import org.drools.core.rule.Package;
 import org.springframework.stereotype.Service;
 
+import com.hit.health.bindings.ElgDetails;
 import com.hit.health.bindings.IndvInfo;
-import com.hit.health.bindings.PlanInfo;
 import com.hit.health.service.RuleService;
 @Service
 public class MedicaidRuleService implements RuleService {
 
 	@Override
-	public PlanInfo executeRules(IndvInfo info) {
+	public ElgDetails executeRules(IndvInfo info) {
 
-		PlanInfo planInfo=null;
+		ElgDetails elgDetails=null;
 
 		try {
 			InputStream isStream=getClass().getResourceAsStream("/com/ed/rules/Medicaid.drl");
@@ -34,13 +34,12 @@ public class MedicaidRuleService implements RuleService {
 			WorkingMemory memory=ruleBase.newStatefulSession();
 			memory.insert(info);
 			memory.fireAllRules();
-			planInfo=info.getPlanInfo();
+			elgDetails=info.getElgDetails();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		
-		return planInfo;
+		return elgDetails;
 	}
-
 }

@@ -10,6 +10,6 @@ public class IndvInfo {
 	private String indvDob;
 	private String planName;
 	private String isEmployed;
-	private PlanInfo planInfo;
+	private ElgDetails elgDetails;
 	
 }

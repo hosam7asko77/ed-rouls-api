@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hit.health.bindings.ElgDetails;
 import com.hit.health.bindings.IndvInfo;
 import com.hit.health.bindings.PlanInfo;
 import com.hit.health.service.DetermineEligibilityService;
@@ -18,7 +19,7 @@ public class DetermineEligibilityRestController {
 	private DetermineEligibilityService eligService;
 	@ApiOperation(
 			value = "Find Eligibility Details",
-			response = PlanInfo.class,
+			response = ElgDetails.class,
 			tags = "determineEligibility",
 			consumes = "application/json",
 			produces = "application/xml"
@@ -36,10 +37,10 @@ public class DetermineEligibilityRestController {
 			produces = {"application/json","application/xml"},
 			consumes = {"application/json","application/xml"}
 			)
-	public PlanInfo checkPlanEligiblity(@RequestBody IndvInfo indvInfo) {
+	public ElgDetails checkPlanEligiblity(@RequestBody IndvInfo indvInfo) {
 		System.out.println(indvInfo);
-		PlanInfo planInfo = eligService.determineEligibility(indvInfo);
-		return planInfo;
+		ElgDetails elgDetails = eligService.determineEligibility(indvInfo);
+		return elgDetails;
 	}
 
 }
