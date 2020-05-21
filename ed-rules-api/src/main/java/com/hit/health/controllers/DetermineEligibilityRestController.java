@@ -1,5 +1,6 @@
 package com.hit.health.controllers;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hit.health.bindings.ElgDetails;
 import com.hit.health.bindings.IndvInfo;
+import com.hit.health.bindings.IndvInfoRequest;
 import com.hit.health.bindings.PlanInfo;
 import com.hit.health.service.DetermineEligibilityService;
 
@@ -37,8 +39,10 @@ public class DetermineEligibilityRestController {
 			produces = {"application/json","application/xml"},
 			consumes = {"application/json","application/xml"}
 			)
-	public ElgDetails checkPlanEligiblity(@RequestBody IndvInfo indvInfo) {
-		System.out.println(indvInfo);
+	public ElgDetails checkPlanEligiblity(@RequestBody IndvInfoRequest indvInfoRequest) {
+		IndvInfo indvInfo = new IndvInfo();
+		BeanUtils.copyProperties(indvInfoRequest, indvInfo);
+		
 		ElgDetails elgDetails = eligService.determineEligibility(indvInfo);
 		return elgDetails;
 	}

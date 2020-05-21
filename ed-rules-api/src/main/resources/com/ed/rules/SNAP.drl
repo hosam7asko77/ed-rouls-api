@@ -15,7 +15,7 @@ rule "Snap Plan Rules for AP"
 			elgDetails.setPlanStatus("AP");
 			elgDetails.setPlanStartDate(cdt.getToday());
 			elgDetails.setPlanEndDate(cdt.getNextYear());
-			elgDetails.setBenefitAmount("$300.00");
+			elgDetails.setBenefitAmount(300.00);
 			indvInfo.setElgDetails(elgDetails);
 	end
 rule "Snap Plan Rules for DN"

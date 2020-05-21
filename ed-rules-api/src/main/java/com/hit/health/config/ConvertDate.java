@@ -9,7 +9,7 @@ public class ConvertDate {
 	private String today;
 	private String nextYear;
 	public ConvertDate() {
-		SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyyy");
 		Calendar cal = Calendar.getInstance();
 		Date todayDate = cal.getTime();
 		cal.add(Calendar.YEAR, 1);
