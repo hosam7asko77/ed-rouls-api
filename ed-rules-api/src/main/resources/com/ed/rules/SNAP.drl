@@ -2,17 +2,19 @@ package com.ed.rules;
 
 import com.hit.health.bindings.IndvInfo;
 import com.hit.health.bindings.ElgDetails;
+import com.hit.health.config.ConvertDate;
 
 rule "Snap Plan Rules for AP"
 
 	when
 		indvInfo:IndvInfo(isEmployed=='N')
 	then
+			ConvertDate cdt=new ConvertDate();
 			ElgDetails elgDetails = new ElgDetails();
 			elgDetails.setPlanName("SNAP");
 			elgDetails.setPlanStatus("AP");
-			elgDetails.setPlanStartDate("04-04-2020");
-			elgDetails.setPlanEndDate("04-07-2020");
+			elgDetails.setPlanStartDate(cdt.getToday());
+			elgDetails.setPlanEndDate(cdt.getNextYear());
 			elgDetails.setBenefitAmount("$300.00");
 			indvInfo.setElgDetails(elgDetails);
 	end
