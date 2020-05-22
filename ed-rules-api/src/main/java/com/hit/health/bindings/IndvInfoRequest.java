@@ -9,6 +9,6 @@ public class IndvInfoRequest {
 	private String indvLastName;
 	private String indvDob;
 	private String planName;
-	private String isEmployed;
+	private boolean employed;
 	
 }

@@ -9,7 +9,7 @@ public class IndvInfo {
 	private String indvLastName;
 	private String indvDob;
 	private String planName;
-	private String isEmployed;
+	private boolean employed;
 	private ElgDetails elgDetails;
 	
 }

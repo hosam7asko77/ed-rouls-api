@@ -7,7 +7,7 @@ import com.hit.health.config.ConvertDate;
 rule "Snap Plan Rules for AP"
 
 	when
-		indvInfo:IndvInfo(isEmployed=='N')
+		indvInfo:IndvInfo(employed == false )
 	then
 			ConvertDate cdt=new ConvertDate();
 			ElgDetails elgDetails = new ElgDetails();
@@ -21,7 +21,7 @@ rule "Snap Plan Rules for AP"
 rule "Snap Plan Rules for DN"
 
 	when
-		indvInfo:IndvInfo(isEmployed=='Y')
+		indvInfo:IndvInfo(employed == true)
 	then
 			ElgDetails elgDetails = new ElgDetails();
 			elgDetails.setPlanName("SNAP");
