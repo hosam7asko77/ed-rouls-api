@@ -10,5 +10,6 @@ public class IndvInfoRequest {
 	private String indvDob;
 	private String planName;
 	private boolean employed;
+	private Double totleIncome;
 	
 }

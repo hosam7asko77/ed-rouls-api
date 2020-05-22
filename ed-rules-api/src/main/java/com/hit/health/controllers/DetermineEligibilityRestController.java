@@ -42,9 +42,14 @@ public class DetermineEligibilityRestController {
 	public ElgDetails checkPlanEligiblity(@RequestBody IndvInfoRequest indvInfoRequest) {
 		IndvInfo indvInfo = new IndvInfo();
 		BeanUtils.copyProperties(indvInfoRequest, indvInfo);
-		
 		ElgDetails elgDetails = eligService.determineEligibility(indvInfo);
-		return elgDetails;
+		if (elgDetails != null) {
+			return elgDetails;
+		}else {
+			return new ElgDetails();
+		}
+		
+		
 	}
 
 }

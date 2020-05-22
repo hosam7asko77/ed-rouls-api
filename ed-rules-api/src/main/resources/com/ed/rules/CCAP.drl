@@ -1,0 +1,31 @@
+package com.ed.rules;
+
+import com.hit.health.bindings.IndvInfo;
+import com.hit.health.bindings.ElgDetails;
+import com.hit.health.config.ConvertDate;
+
+rule "Ccap Plan Rules for AP"
+
+	when
+		indvInfo:IndvInfo(totleIncome < 1000.00 )
+	then
+			ConvertDate cdt=new ConvertDate();
+			ElgDetails elgDetails = new ElgDetails();
+			elgDetails.setPlanName("CCAP");
+			elgDetails.setPlanStatus("AP");
+			elgDetails.setPlanStartDate(cdt.getToday());
+			elgDetails.setPlanEndDate(cdt.getNextYear());
+			indvInfo.setElgDetails(elgDetails);
+	end
+rule "Ccap Plan Rules for DN"
+
+	when
+		indvInfo:IndvInfo(totleIncome > 1000.00)
+	then
+			ElgDetails elgDetails = new ElgDetails();
+			elgDetails.setPlanName("SNAP");
+			elgDetails.setPlanStatus("DN");
+			elgDetails.setDenialReson("High Income");
+			indvInfo.setElgDetails(elgDetails);
+	end
+	

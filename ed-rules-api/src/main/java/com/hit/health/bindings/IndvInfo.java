@@ -10,6 +10,7 @@ public class IndvInfo {
 	private String indvDob;
 	private String planName;
 	private boolean employed;
+	private Double totleIncome;
 	private ElgDetails elgDetails;
 	
 }
